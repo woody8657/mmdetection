@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+CUDA_LAUNCH_BLOCKING=1
 CONFIG=$1
 GPUS=$2
 PORT=${PORT:-29500}
