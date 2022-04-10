@@ -1,4 +1,4 @@
-_base_ = '../tood/tood_r50_fpn_mstrain_2x_coco.py'
+_base_ = '../tood/tood_r101_fpn_mstrain_2x_coco.py'
 model = dict(
     bbox_head=dict(
         num_classes=1
@@ -30,5 +30,4 @@ checkpoint_config = dict(interval=200)
 workflow = [('train', 1),('val',1)]
 # optimizer = dict(type='SGD', lr=0.01, momentum=0.9, weight_decay=0.0001)
 # runner = dict(type='EpochBasedRunner', max_epochs=20)
-load_from = '/home/u/woody8657/projs/Pneumothorax-detection/mmdetection/configs/Pneumothorax/tood_r50_fpn_mstrain_2x_coco_20211210_144231-3b23174c.pth'
-# load_from = '/home/u/woody8657/projs/Pneumothorax-detection/mmdetection/configs/detr/detr_r50_8x2_150e_coco_20201130_194835-2c4b8974.pth'
+load_from = '/home/u/woody8657/projs/Pneumothorax-detection/mmdetection/configs/Pneumothorax/tood_r101_fpn_mstrain_2x_coco_20211210_144232-a18f53c8.pth'
