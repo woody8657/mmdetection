@@ -1,1 +1,0 @@
-CUDA_VISIBLE_DEVICES=0,1,2 ./tools/dist_train.sh /home/u/woody8657/projs/Pneumothorax-detection/mmdetection/configs/Pneumothorax/tmp.py 3

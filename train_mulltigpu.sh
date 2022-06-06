@@ -1,1 +1,1 @@
-CUDA_VISIBLE_DEVICES=1,2,3 ./tools/dist_train.sh ./configs/Pneumothorax/tood.py 3
+CUDA_VISIBLE_DEVICES=1,2 ./tools/dist_train.sh ./configs/Pneumothorax/DETR.py 2
