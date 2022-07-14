@@ -1,1 +1,1 @@
-CUDA_VISIBLE_DEVICES=1,2 ./tools/dist_train.sh ./configs/Pneumothorax/DETR.py 2
+CUDA_VISIBLE_DEVICES=0,1,3 ./tools/dist_train.sh ./configs/Pneumothorax/deformable_detr.py 3

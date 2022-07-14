@@ -26,9 +26,8 @@ data = dict(
         classes=classes,
         ann_file='/home/u/woody8657/projs/Pneumothorax-detection/mmdetection/configs/Pneumothorax/training_list/Pneumothorax_yolov5_val.json'))
 
-
-work_dir = './work_dirs/fast_rcnn_r50_fpn_coarse_baseline'
-checkpoint_config = dict(interval=50)
+optimizer = dict(type='SGD', lr=0.02*9/8, momentum=0.9, weight_decay=0.0001)
+work_dir = './work_dirs/fast_rcnn'
 workflow = [('train', 1),('val',1)]
 
 

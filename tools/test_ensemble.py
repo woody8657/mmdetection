@@ -27,7 +27,10 @@ def parse_args():
     parser = argparse.ArgumentParser(
         description='MMDet test (and eval) a model')
     parser.add_argument('--configs', nargs='+', type=str)    
+
     parser.add_argument('--checkpoints', nargs='+', type=str) 
+    parser.add_argument('--ensemble-method', type=str, help='NMS, soft_NMS, NMW, WBF') 
+
     parser.add_argument(
         '--work-dir',
         help='the directory to save the file containing evaluation metrics')
@@ -46,7 +49,7 @@ def parse_args():
     parser.add_argument(
         '--format-only',
         action='store_true',
-        help='Format the output results without perform evaluation. It is'
+        help='Format the output results without perfeorm evaluation. It is'
         'useful when you want to format the result to a specific format and '
         'submit it to the test server')
     parser.add_argument(
@@ -294,12 +297,12 @@ if __name__ == '__main__':
             b_lists, conf_lists, cls_lists = test(args, b_lists, conf_lists, cls_lists, True)
     
     # ensemble
-    
-    iou_thr = 0.5
+    from ensemble.ensemble_boxes import *
+    iou_thr = 0.7
     skip_box_thr = 0.0001
     sigma = 0.1
     outputs = []
     for i in tqdm.tqdm(range(len(cls_lists))):
-        boxes, scores, _ = nms(b_lists[i], conf_lists[i], cls_lists[i],weights=None, iou_thr=iou_thr)
+        boxes, scores, _ = weighted_boxes_fusion(b_lists[i], conf_lists[i], cls_lists[i],weights=None, iou_thr=iou_thr)
         outputs.append(np.concatenate((boxes,np.expand_dims(scores, axis=1)),axis=1))
     test(args, None, None, None, False, outputs)
